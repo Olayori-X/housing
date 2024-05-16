@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Geolocation API</h2>
+<p>Click the button to get your coordinates.</p>
+
+<form id = "senddata">
+    <label>House Name</label><br>
+    <input type = "text" name = "housename"><br><br>
+    <label>Street</label><br>
+    <input type = "text" name = "street"><br><br>
+    
+    <input type = "text" id = "latitude">
+    <input type = "text" id = "longitude">
+
+    <input type = "submit" value = "Submit">
+</form>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+const x = whatever("demo");
+function whatever(x){
+    var w = document.getElementById(x);
+    return w;
+}
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+
+function showPosition(position) {
+  whatever("demo").innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+
+    var latitude = whatever("latitude");
+    var longitude = whatever("longitude");
+    latitude.value = position.coords.latitude;
+    longitude.value = position.coords.longitude;
+}
+
+document.getElementById("senddata").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Create a new FormData object from the form
+    var formData = new FormData(this);
+
+    // Send the form data asynchronously using Fetch API
+    fetch("server/addhousedetails.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+            print(response.text());
+        }
+        return response.text();
+    })
+    .then(data => {
+        console.log("Form submitted successfully:", data);
+        // Handle success response here
+    })
+    .catch(error => {
+        console.error("There was a problem with form submission:", error);
+        // Handle error here
+    });
+});
+</script>
+
+</body>
+</html>

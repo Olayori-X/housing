@@ -1,0 +1,8 @@
+Creating a database(I don't know the name of the database yet)
+One table will be called housedetails
+Another table will be called inspection_done
+Another table will be called users
+Work on the validateuser.php file(Done)
+Work on the updateuserdescription.php file
+Work on the passwordchange.php file
+Work on the inspection_video_payment.php file
