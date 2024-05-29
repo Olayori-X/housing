@@ -11,7 +11,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $data = file_get_contents("php://input");
     $values = json_decode($data, true);
 
-    $username = validate($values['username']);
+    $username = validate($values['email']);
 	$password = md5(validate($values['password']));
 
 	if (empty($username)){
@@ -49,11 +49,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 if($row['Password'] === $password){
                     unset($row['password']);
                     unset($row['id']);
+                    session_start();
+                    $_SESSION['userid'] = $row['userid'];
 
                     $data = $row['userid'];
                     $response = [
                         'response' => "successful",
-                        'userid' => $data
+                        'userid' => $data,
+                        'accessToken' => session_id()
                     ];
 
                 }else{	
@@ -129,5 +132,5 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     header("Content-Type: application/json");
     echo json_encode($response);
 }else{
-	header("Location: Login.php");
+	http_response_code(405);
 }

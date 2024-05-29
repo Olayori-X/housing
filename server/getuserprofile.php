@@ -1,13 +1,13 @@
 <?php
 //This gets the profile of a particular user. Landlord or Tenant
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    if($_SERVER['REQUEST_METHOD'] === 'GET'){
         
         include "connect.php";
         include "validate.php";
 
-        $values = json_decode(file_get_contents("php://input"), true);
+        // $values = json_decode(file_get_contents("php://input"), true);
 
-        $user = validate($values['userid']);
+        $user = validate($_GET['userid']);
 
         $users = "SELECT * FROM users WHERE userid = ?";
         $prepareuserstmt = mysqli_prepare($connect, $users);
@@ -33,5 +33,5 @@
             echo json_encode($message);
         }
     }else{
-        header("Location: ../Login.php");
+        http_response_code(405);
     }

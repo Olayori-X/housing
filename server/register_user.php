@@ -16,14 +16,43 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
 	$txtPassword = md5(validate($_POST['password']));
 	$txtStatus = validate($_POST['status']);
 
-	$getlastuserid = "SELECT userid FROM users ORDER BY id DESC LIMIT 1";
-	$getquery = mysqli_query($connect, $getlastuserid);
+	// $getlastuserid = "SELECT userid FROM users ORDER BY id DESC LIMIT 1";
+	// $getquery = mysqli_query($connect, $getlastuserid);
 
-	if($getquery){
-		$row = mysqli_fetch_assoc($getquery);
-		$data = $row['id'] + 1;
-		$userid = "user" . $data;
+	// if($getquery){
+	// 	$row = mysqli_fetch_assoc($getquery);
+	// 	$data = $row['id'] + 1;
+	// 	$userid = "user" . $data;
+	// }
+
+	function generateUserID() {
+		// Define the pattern lengths
+		$pattern = [4, 4, 5, 4];
+		
+		// Calculate the total length of the number
+		$totalLength = array_sum($pattern);
+		
+		// Generate random digits
+		$digits = '';
+		for ($i = 0; $i < $totalLength; $i++) {
+			$digits .= mt_rand(0, 9);
+		}
+		
+		// Format the number according to the pattern
+		$formattedNumber = '';
+		$currentIndex = 0;
+		foreach ($pattern as $length) {
+			if ($formattedNumber !== '') {
+				$formattedNumber .= '-';
+			}
+			$formattedNumber .= substr($digits, $currentIndex, $length);
+			$currentIndex += $length;
+		}
+		
+		return $formattedNumber;
 	}
+	
+	$userid = generateUserID();
 
 	$UserVerification = "SELECT * FROM users WHERE email = ?";
 	$prepareverificationstmt = mysqli_prepare($connect, $UserVerification);
@@ -100,5 +129,5 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
 	header('Content-Type: application/json');
     echo json_encode($response); 
 }else{
-	header("Location: ../Signup.php");
+	http_response_code(405);
 }
