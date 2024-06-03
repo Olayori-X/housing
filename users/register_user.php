@@ -7,8 +7,8 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
 	include "validate.php";
 
 	$txtfirstName = $_POST['firstName'];
-	$txtlastName = $_POST['lasNme'];
-	$txtPhone = $_POST['phnNo'];
+	$txtlastName = $_POST['lastname'];
+	$txtPhone = $_POST['phone'];
 	$txtEmail = validate($_POST['email']);
 	$txtCountry = $_POST['country'];
 	$txtState = $_POST['state'];

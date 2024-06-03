@@ -8,6 +8,10 @@ function validate($data){
     return $data;
 }
 
+header("Access-Control-Allow-Origin: *"); // Allow requests from any origin
+header("Access-Control-Allow-Methods: *"); // Allow GET, POST, and OPTIONS requests
+header("Access-Control-Allow-Headers: *"); // Allow Content-Type and Authorization headers
+
 function verifyToken(){
     $headers = getallheaders();
     $sessionId = isset($headers['accessToken']) ? $headers['accessToken'] : '';

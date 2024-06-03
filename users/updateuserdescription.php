@@ -1,18 +1,15 @@
 <?php
 //Will still work on this when I get complete information
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $data = file_get_contents("php://input");
-    $values = json_decode($data, true);
-
-    $userid = validate($values['userid']);
+    $userid = validate($_POST['userid']);
     // $txtfirstName = $_POST['firNme'];
 	// $txtlastName = $_POST['lasNme'];
 	// $txtPhone = $_POST['phnNo'];
-	$txtEmail = validate($values['email']);
+	$txtEmail = validate($_POST['email']);
 	// $txtCountry = $_POST['country'];
 	// $txtState = $_POST['state'];
 	// $txtCity = $_POST['city'];
-	$txtUsername = validate($values['username']);
+	$txtUsername = validate($_POST['username']);
 	// $codedotp = md5(validate($_POST['otp']));
 	// $otp = validate($_POST['otp']);
 

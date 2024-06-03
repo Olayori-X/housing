@@ -4,9 +4,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	include 'validate.php';
     include 'time.php';
     
-    header("Access-Control-Allow-Origin: *"); // Allow requests from any origin
-    header("Access-Control-Allow-Methods: *"); // Allow GET, POST, and OPTIONS requests
-    header("Access-Control-Allow-Headers: *"); // Allow Content-Type and Authorization headers
 
     $userid = validate($_POST['userid']);
     $housename = validate($_POST['housename']);
