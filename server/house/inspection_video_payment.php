@@ -54,6 +54,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         mysqli_stmt_bind_param($stmt, "s", $email);
         mysqli_stmt_execute($stmt);
         $UserQuery = mysqli_stmt_get_result($stmt);
+        $number_of_views = 3;
 
         if($UserQuery -> num_rows > 0){
           while($row = $UserQuery->fetch_assoc()) {

@@ -98,6 +98,8 @@
                     <button type = "button" class = "submenu">Register Users</button>
                     <div class = "submenu-item" style="display: none;">
                         <h4>Mode of sending data - Formdata</h4>
+                        <h6>endpoint - /users/register_user.php</h6>
+                        <h6>method - POST</h6>
                         <h3>Parameters required</h3>
                         <table>
                             <tr>
@@ -153,6 +155,8 @@
                     <button type = "button" class = "submenu">Login User</button>
                     <div class = "submenu-item" style = "display: none;">
                         <h4>Mode of sending data - Jsondata</h4>
+                        <h6>endpoint - /users/login_user.php</h6>
+                        <h6>method - POST</h6>
                         <h3>Parameters required</h3>
                         <table>
                             <tr>
@@ -174,11 +178,34 @@
                     </div>
                 </div>
 
+                <div id = "getprofile" class = "menu-item">
+                    <button type = "button" class = "submenu">Get the profile of a user</button>
+                    <div class = "submenu-item" style = "display: none;">
+                        <h4>Mode of sending data - Jsondata</h4>
+                        <h6>endpoint - /users/getuserprofile.php</h6>
+                        <h6>Method - GET</h6>
+                        <h3>Parameters required</h3>
+                        <table>
+                            <tr>
+                                <th>Parameters</th>
+                                <th>Description</th>
+                                <th>Optional</th>
+                            </tr>
+                            <tr>
+                                <td>userid</td>
+                                <td>The userid of the the user whose profile is being viewed</td>
+                                <td>false</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
                 <div id = "updateprofile" class = "menu-item">
                     <button type = "button" class = "submenu">Update User Profile</button>
                     <div class = "submenu-item" style = "display: none;">
                         <h6>Mode of sending data - formdata</h6>
                         <h6>endpoint - /users/updateuserdescription.php</h6>
+                        <h6>method - POST</h6>
                         <h3>Parameters required in the form</h3>
                         <table>
                             <tr>
@@ -225,6 +252,149 @@
                                 <td>city</td>
                                 <td>The city of the user</td>
                                 <td>true</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id = "changeprofilepicture" class = "menu-item">
+                    <button type = "button" class = "submenu">Change User's Profile Picture</button>
+                    <div class = "submenu-item" style = "display: none;">
+                        <h6>Mode of sending data - formData</h6>
+                        <p>endpoint - /users/updateprofilepicture.php</p>
+                        <h3>Parameters required</h3>
+                        <table>
+                            <tr>
+                                <th>Parameters</th>
+                                <th>Description</th>
+                                <th>Optional</th>
+                            </tr>
+                            <tr>
+                                <td>accessToken</td>
+                                <td>Same as always</td>
+                                <td>false</td>
+                            </tr>
+                            <tr>
+                                <td>image</td>
+                                <td></td>
+                                <td>false</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class = "house">
+            <button type = "button" class = "menu">House</button>
+            <div style = "display: none" class = "menu-items">
+                <div id = "addhousedetails" class = "menu-item">
+                    <button type = "button" class = "submenu">Add house details</button>
+                    <div class = "submenu-item" style="display: none;">
+                        <h4>Mode of sending data - Formdata</h4>
+                        <h6>endpoint - /house/addhousedetails.php</h6>
+                        <h6>method - POST</h6>
+                        <h3>Parameters required</h3>
+                        <table>
+                            <tr>
+                                <th>Parameters</th>
+                                <th>Description</th>
+                                <th>Optional</th>
+                            </tr>
+                            <tr>
+                                <td>accessToken</td>
+                                <td>Header parameter. This is the access token provided by the server for individual user</td>
+                                <td>false</td>
+                            </tr>
+                            <tr>
+                                <td>userid</td>
+                                <td>The id of the user. It will be provided by the server when the user logs in successfully</td>
+                                <td>false</td>
+                            </tr>
+                            <tr>
+                                <td>housename</td>
+                                <td>This will be set by the user. The user decides what to name his/her house</td>
+                                <td>false</td>
+                            </tr>
+                            <tr>
+                                <td>street</td>
+                                <td>The street where the house is. This should also be provided by the user</td>
+                                <td>false</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id = "viewhouses" class = "menu-item">
+                    <button type = "button" class = "submenu">View vacant houses</button>
+                    <div class = "submenu-item" style = "display: none;">
+                        <h4>Mode of sending data - Jsondata</h4>
+                        <h6>endpoint - /house/view_vacant_houses.php</h6>
+                        <h6>method - GET</h6>
+                        <h3>Parameters required</h3>
+                        <table>
+                            <tr>
+                                <th>Parameters</th>
+                                <th>Description</th>
+                                <th>Optional</th>
+                            </tr>
+                            <tr>
+                                <td>userid</td>
+                                <td>The id of the user. It will be provided by the server when the user logs in successfully</td>
+                                <td>false</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id = "inspectionvideopayment" class = "menu-item">
+                    <button type = "button" class = "submenu">Pay for inspection video</button>
+                    <div class = "submenu-item" style = "display: none;">
+                        <h6>Mode of sending data - Jsondata</h6>
+                        <h6>endpoint - /house/inspection_video_payment.php</h6>
+                        <h3>Parameters required in the form</h3>
+                        <table>
+                            <tr>
+                                <td>viewerid</td>
+                                <td>The id of the user. It will be provided by the server when the user logs in successfully</td>
+                                <td>false</td>
+                            </tr>
+                            <tr>
+                                <td>houseid</td>
+                                <td>The id of the house clicked. It will be provided by the server when the view vacanthouse is successful</td>
+                                <td>false</td>
+                            </tr>
+                            <tr>
+                                <td>accessToken</td>
+                                <td>Header parameter. This is the access token provided by the server for individual user</td>
+                                <td>false</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id = "viewinspectionvideo" class = "menu-item">
+                    <button type = "button" class = "submenu">View inspection video</button>
+                    <div class = "submenu-item" style = "display: none;">
+                        <h6>Mode of sending data - Jsondata</h6>
+                        <h6>endpoint - /house/view_inspection_video.php</h6>
+                        <h3>Parameters required in the form</h3>
+                        <table>
+                            <tr>
+                                <td>viewerid</td>
+                                <td>The id of the user. It will be provided by the server when the user logs in successfully</td>
+                                <td>false</td>
+                            </tr>
+                            <tr>
+                                <td>houseid</td>
+                                <td>The id of the house clicked. It will be provided by the server when the view vacanthouse is successful</td>
+                                <td>false</td>
+                            </tr>
+                            <tr>
+                                <td>accessToken</td>
+                                <td>Header parameter. This is the access token provided by the server for individual user</td>
+                                <td>false</td>
                             </tr>
                         </table>
                     </div>

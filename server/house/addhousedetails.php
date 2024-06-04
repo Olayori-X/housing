@@ -1,8 +1,8 @@
 <?php
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-	include 'connect.php';
-	include 'validate.php';
-    include 'time.php';
+	include '../connect.php';
+	include '../validate.php';
+    include '../time.php';
     
 
     $userid = validate($_POST['userid']);
